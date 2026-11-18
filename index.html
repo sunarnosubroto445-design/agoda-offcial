@@ -1,0 +1,366 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Luxury Hotel Booking</title>
+
+<style>
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: Arial, sans-serif;
+  background: #f3f5f8;
+  color: #222;
+}
+
+header {
+  background: #123b70;
+  color: white;
+  padding: 18px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.logo {
+  font-size: 22px;
+  font-weight: bold;
+}
+
+.header-link {
+  color: white;
+  font-size: 13px;
+}
+
+.hero {
+  position: relative;
+  height: 280px;
+  overflow: hidden;
+  background: #123b70;
+}
+
+.slider {
+  display: flex;
+  width: 300%;
+  height: 100%;
+  animation: geser 18s infinite;
+}
+
+.slide {
+  width: 33.333%;
+  height: 100%;
+  flex-shrink: 0;
+  background-size: cover;
+  background-position: center;
+}
+
+.slide:nth-child(1) {
+  background-image: url("https://images.unsplash.com/photo-1566073771259-6a8506099945?w=1200");
+}
+
+.slide:nth-child(2) {
+  background-image: url("https://images.unsplash.com/photo-1571896349842-33c89424de2d?w=1200");
+}
+
+.slide:nth-child(3) {
+  background-image: url("https://images.unsplash.com/photo-1542314831-068cd1dbfeeb?w=1200");
+}
+
+@keyframes geser {
+  0%, 28% { transform: translateX(0); }
+  33%, 61% { transform: translateX(-33.333%); }
+  66%, 94% { transform: translateX(-66.666%); }
+  100% { transform: translateX(0); }
+}
+
+.hero-text {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(
+    90deg,
+    rgba(0,0,0,.65),
+    rgba(0,0,0,.1)
+  );
+  color: white;
+  padding: 35px 22px;
+}
+
+.hero-text h1 {
+  font-size: 27px;
+  margin-top: 35px;
+}
+
+.hero-text p {
+  font-size: 14px;
+}
+
+.search-box {
+  background: white;
+  margin: -25px 15px 25px;
+  position: relative;
+  border-radius: 12px;
+  padding: 18px;
+  box-shadow: 0 4px 15px #0002;
+}
+
+.search-box h3 {
+  margin-top: 0;
+  color: #123b70;
+}
+
+label {
+  display: block;
+  font-size: 13px;
+  margin: 12px 0 6px;
+  font-weight: bold;
+}
+
+input, select {
+  width: 100%;
+  padding: 13px;
+  border: 1px solid #ddd;
+  border-radius: 7px;
+  font-size: 14px;
+  background: white;
+}
+
+.search-btn {
+  width: 100%;
+  padding: 14px;
+  margin-top: 16px;
+  background: #1267b1;
+  color: white;
+  border: none;
+  border-radius: 7px;
+  font-size: 16px;
+  font-weight: bold;
+}
+
+.container {
+  padding: 15px;
+}
+
+.section-title {
+  color: #123b70;
+  font-size: 21px;
+}
+
+.hotel {
+  background: white;
+  border-radius: 12px;
+  overflow: hidden;
+  margin-bottom: 20px;
+  box-shadow: 0 3px 12px #0001;
+}
+
+.hotel img {
+  width: 100%;
+  height: 190px;
+  object-fit: cover;
+}
+
+.hotel-info {
+  padding: 15px;
+}
+
+.hotel-info h3 {
+  margin: 0 0 8px;
+}
+
+.location {
+  color: #777;
+  font-size: 13px;
+}
+
+.price {
+  color: #1267b1;
+  font-size: 21px;
+  font-weight: bold;
+  margin: 12px 0;
+}
+
+.hotel-btn {
+  display: block;
+  text-align: center;
+  background: #1267b1;
+  color: white;
+  text-decoration: none;
+  padding: 12px;
+  border-radius: 7px;
+  font-weight: bold;
+}
+
+.hotel-btn:hover, .search-btn:hover {
+  background: #084b87;
+}
+
+footer {
+  text-align: center;
+  background: #123b70;
+  color: white;
+  padding: 22px;
+  font-size: 13px;
+}
+
+@media(min-width:700px) {
+  .container {
+    max-width: 900px;
+    margin: auto;
+  }
+  .search-box {
+    max-width: 850px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+}
+</style>
+</head>
+
+<body>
+
+<header>
+  <div class="logo">LUXURY HOTEL</div>
+  <div class="header-link">Hotel Booking Demo</div>
+</header>
+
+<section class="hero">
+  <div class="slider">
+    <div class="slide"></div>
+    <div class="slide"></div>
+    <div class="slide"></div>
+  </div>
+
+  <div class="hero-text">
+    <h1>Temukan Hotel Impian Anda</h1>
+    <p>Nikmati pengalaman menginap yang nyaman dan mewah.</p>
+  </div>
+</section>
+
+<section class="search-box">
+  <h3>Cari Penginapan</h3>
+
+  <form id="searchForm">
+    <label>Tujuan / Kota</label>
+    <input id="destination" type="text"
+      placeholder="Contoh: Bali, Jakarta, Bandung">
+
+    <label>Check-in</label>
+    <input type="date" id="checkin" required>
+
+    <label>Check-out</label>
+    <input type="date" id="checkout" required>
+
+    <label>Jumlah Tamu</label>
+    <select id="guests">
+      <option>1 Tamu</option>
+      <option>2 Tamu</option>
+      <option>3 Tamu</option>
+      <option>4 Tamu</option>
+    </select>
+
+    <button class="search-btn" type="submit">
+      Cari Hotel
+    </button>
+  </form>
+</section>
+
+<main class="container">
+  <h2 class="section-title">Hotel Pilihan</h2>
+
+  <div id="hotelList">
+
+    <div class="hotel" data-city="bali">
+      <img src="https://images.unsplash.com/photo-1571896349842-33c89424de2d?w=1000" alt="Hotel Bali">
+      <div class="hotel-info">
+        <h3>Paradise Luxury Resort</h3>
+        <p class="location">📍 Bali, Indonesia</p>
+        <p>⭐ 5.0 · Kolam renang · WiFi</p>
+        <div class="price">Rp 850.000 / malam</div>
+        <a href="#" class="hotel-btn"
+          onclick="booking('Paradise Luxury Resort'); return false;">
+          Lihat Kamar
+        </a>
+      </div>
+    </div>
+
+    <div class="hotel" data-city="jakarta">
+      <img src="https://images.unsplash.com/photo-1566073771259-6a8506099945?w=1000" alt="Hotel Jakarta">
+      <div class="hotel-info">
+        <h3>Grand Royal Hotel</h3>
+        <p class="location">📍 Jakarta, Indonesia</p>
+        <p>⭐ 4.8 · Restoran · WiFi</p>
+        <div class="price">Rp 650.000 / malam</div>
+        <a href="#" class="hotel-btn"
+          onclick="booking('Grand Royal Hotel'); return false;">
+          Lihat Kamar
+        </a>
+      </div>
+    </div>
+
+    <div class="hotel" data-city="bandung">
+      <img src="https://images.unsplash.com/photo-1542314831-068cd1dbfeeb?w=1000" alt="Hotel Bandung">
+      <div class="hotel-info">
+        <h3>Mountain View Resort</h3>
+        <p class="location">📍 Bandung, Indonesia</p>
+        <p>⭐ 4.9 · Pemandangan alam · WiFi</p>
+        <div class="price">Rp 550.000 / malam</div>
+        <a href="#" class="hotel-btn"
+          onclick="booking('Mountain View Resort'); return false;">
+          Lihat Kamar
+        </a>
+      </div>
+    </div>
+
+  </div>
+</main>
+
+<footer>
+  <p>Luxury Hotel Booking</p>
+  <p>Website Demo · © 2026</p>
+</footer>
+
+<script>
+document.getElementById("searchForm")
+.addEventListener("submit", function(e) {
+  e.preventDefault();
+
+  const city = document.getElementById("destination")
+    .value.trim().toLowerCase();
+
+  const checkin = document.getElementById("checkin").value;
+  const checkout = document.getElementById("checkout").value;
+
+  if (checkout <= checkin) {
+    alert("Tanggal check-out harus setelah check-in.");
+    return;
+  }
+
+  let found = 0;
+
+  document.querySelectorAll(".hotel").forEach(hotel => {
+    const match = !city ||
+      hotel.dataset.city.includes(city);
+
+    hotel.style.display = match ? "block" : "none";
+
+    if (match) found++;
+  });
+
+  alert(found + " hotel ditemukan. Data ini hanya contoh demo.");
+});
+
+function booking(name) {
+  alert("Anda memilih " + name +
+    ". Ini adalah simulasi pemesanan demo.");
+}
+</script>
+
+</body>
+</html>
